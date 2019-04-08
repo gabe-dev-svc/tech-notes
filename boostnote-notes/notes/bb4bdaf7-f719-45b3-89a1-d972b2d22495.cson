@@ -1,0 +1,39 @@
+createdAt: "2019-03-18T13:44:04.322Z"
+updatedAt: "2019-04-08T15:47:02.243Z"
+type: "MARKDOWN_NOTE"
+folder: "a0297bfc77f01ccc53a6"
+title: "General AWS Notes"
+tags: []
+content: '''
+  # General AWS Notes
+  
+  ## Cloudformation
+  Contains notes over Cloudformation-related things. They're Cloudformation-first, as in I would only be looking for them because I was working with CF
+  
+  ### VPC
+  #### VPC + SQS
+  [Amazon Virtual Private Cloud Endpoints for Amazon SQS
+  ](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-vpc-endpoints.html)
+  >To connect your VPC to Amazon SQS, you must first define an interface VPC endpoint, which lets you connect your VPC to other AWS services. 
+  
+  [Tutorial: Sending a Message to an Amazon SQS Queue from Amazon Virtual Private Cloud
+  ](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-sending-messages-from-vpc.html)
+  >[M]ake sure that you enable private DNS and use only endpoints in the format sqs.us-east-2.amazonaws.com. 
+  - Creating an Amazon interface VPC endpoint allows you to send messages to a queue without accessing the public internet.
+  > The service names vary based on the current AWS Region. For example, if you are in US East (Ohio), the service name is sqs.us-east-2.amazonaws.com.
+  - The current networking template outputs private and public subnets, so those will have to be referenced in the stack templates.
+  
+  ### Lambda
+  #### Lambda + RDS
+  [Configuring a Lambda Function to Access Amazon RDS in an Amazon VPC](https://docs.aws.amazon.com/lambda/latest/dg/vpc-rds.html)
+  
+  ##### Execution Role
+  - **AWSLambdaVPCAccessExecutionRole** has the permissions that the function needs to manage network connections to a VPC
+  
+  ##### Deployment Package
+  - Python script can reside in S3 bucket and be invoked by Lambda function
+  - Use [psycopg2](https://pypi.org/project/psycopg2/) as PostgreSQL driver for Python.
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

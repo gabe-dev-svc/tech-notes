@@ -1,0 +1,35 @@
+createdAt: "2019-03-28T14:45:28.536Z"
+updatedAt: "2019-04-08T15:46:44.040Z"
+type: "MARKDOWN_NOTE"
+folder: "481e1531acabf01ae5de"
+title: "Valuable Code Snippets"
+tags: []
+content: '''
+  # Valuable Code Snippets
+  
+  #### Setting up virutal environment for Python
+  
+  ```python
+  python3 -m venv env
+  source ./env/bin/activate 
+  python -m pip install google-assistant-sdk[samples]
+  ```
+  
+  #### Switching Python versions in Homebrew
+  ```python
+  brew switch python [version]
+  ```
+  
+  #### Bashing into a Docker container
+  ```
+  docker -it <image> bash
+  ```
+  
+  #### Getting ECR Credentials
+  ```
+  aws ecr get-login --region us-east-1 --no-include-email
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

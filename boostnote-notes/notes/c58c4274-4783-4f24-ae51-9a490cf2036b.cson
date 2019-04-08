@@ -1,0 +1,32 @@
+createdAt: "2019-03-08T15:17:22.217Z"
+updatedAt: "2019-04-08T15:47:02.243Z"
+type: "MARKDOWN_NOTE"
+folder: "a0297bfc77f01ccc53a6"
+title: "AWS Security Groups"
+tags: [
+  "AWS_Security_Groups"
+]
+content: '''
+  # AWS Security Groups
+  
+  ## What are the different types of security groups?
+  
+  _SG == Security Group_
+  
+  - DB Security group
+    - Controls access to EC2-Classic DB instances not in a VPC
+    - DB SG rules allows sources to access a DB instance associated with that DB SG
+      - "The source can be a range of addresses (for example, 203.0.113.0/24), or an EC2 security group."
+      - When an EC2 security group is specified, all traffic from EC2 instances using that EC2 security group is allowed.
+  
+  - VPC Security Group
+    - Controls access to DB and EC2 instances inside a VPC.
+    - Enables sources to access a DB instance in a VPC associated with that VPC security group.
+      - Sources include range of addresses or another VPC security group
+    - Allows incoming traffic from all instances that use the source VPC security group.
+    - Requires port specification for each range of addresses that the rule allows access for. E.g. Web Servers: Port 80, SSH Port 22
+    - 
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
