@@ -14,6 +14,16 @@
       "key": "a0297bfc77f01ccc53a6",
       "color": "#FF8E00",
       "name": "AWS"
+    },
+    {
+      "key": "05b25c92718374901b4e",
+      "color": "#B013A4",
+      "name": "Random"
+    },
+    {
+      "key": "fdfee90ea5e12c5b6d12",
+      "color": "#B013A4",
+      "name": "Architecture"
     }
   ],
   "version": "1.0"
