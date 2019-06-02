@@ -1,0 +1,20 @@
+{
+  "folders": [
+    {
+      "key": "a35348ee02dc115b8b2a",
+      "color": "#30D5C8",
+      "name": "spring-cloud-netflix"
+    },
+    {
+      "key": "407cfae9c863b730e9cd",
+      "color": "#E8D252",
+      "name": "spring-cloud-aws"
+    },
+    {
+      "key": "4f53adeba5cb11a5e894",
+      "color": "#2BA5F7",
+      "name": "service-architectur"
+    }
+  ],
+  "version": "1.0"
+}
