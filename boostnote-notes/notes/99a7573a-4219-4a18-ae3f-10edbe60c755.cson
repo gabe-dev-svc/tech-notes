@@ -1,5 +1,5 @@
 createdAt: "2019-04-08T16:03:52.833Z"
-updatedAt: "2019-04-08T16:31:25.631Z"
+updatedAt: "2019-05-08T13:19:43.387Z"
 type: "MARKDOWN_NOTE"
 folder: "ecbe1cced28a7e15366e"
 title: "Spring Cloud AWS"
@@ -8,6 +8,9 @@ tags: [
 ]
 content: '''
   # Spring Cloud AWS
+  
+  __`boostrap.yml` is loaded before `application.yml`__
+  
   
   ## CloudFormation Config
   
@@ -18,6 +21,8 @@ content: '''
   | -------- | ----------- |
   | cloud.aws.stack.name | The name of the manually configured stack name that will be used to retrieve the resources |
   | cloud.aws.stack.auto | Enables the automatic stack name detection for the application |
+  
+  ----
   
   ## SQS
   
@@ -108,6 +113,7 @@ content: '''
   
   - To serialize outbound objects simply create a `QueueMessageHandlerFactory` bean and set the `setSendToMessagingTemplate()` to a messaging template -- it can be a `new QueueMessagingTemplate()`
   
+  ----
   
   ## Spring JDBC + AWS
   
@@ -132,7 +138,7 @@ content: '''
   ### Configuration
   
   - Data source configuration requires security and region configuration as a minimum
-  - Requires a valid `db-instance-identifier` that points to valid Amazon RDS database instance
+  - Requires a valid `db-instance-identifier` that points to valid Amazon RDS Name instance
   - Also requires master user and master password
   - Data source can also be configured with Spring Boot
     - General property name sets data source identifier: `cloud.aws.rds.<instanceName>` where `instanceName` is the name of the concrete instance
@@ -149,11 +155,21 @@ content: '''
   
   - Databases configured with CloudFormation are also supported. 
   
+  ----
   
+  ## Spring + Secrets Manager
+  
+  `spring-cloud-starter-aws-secrets-manager-config` activates support
+  
+  - All configuration parameters are retrieved from a common path prefix which defaults to `/secret`
+  - Shared parameters are retrieved from a path that defaults to `application`
+  - Service-specific parameters use a path that defaults to the configured `spring.application.name`
+  - Activated profiles will be appended to the path using a seperator that defaults to an underscore.
+  - 
 '''
 linesHighlighted: [
-  6
-  99
+  104
+  9
 ]
 isStarred: false
 isTrashed: false
