@@ -1,0 +1,19 @@
+createdAt: "2019-08-02T12:52:10.138Z"
+updatedAt: "2019-08-02T12:54:55.216Z"
+type: "MARKDOWN_NOTE"
+folder: "481e1531acabf01ae5de"
+title: "Bookmarks"
+tags: []
+content: '''
+  # Bookmarks
+  
+  - [OAuth.com - OAuth 2.0 Servers](https://www.oauth.com/)
+    - Goes over OAuth and implenetations thereof. Really cool site, very informative. 
+  - [Spring Cloud AWS](https://cloud.spring.io/spring-cloud-aws/spring-cloud-aws.html)
+    - Spring Cloud AWS Library documentation
+  - [AWS Resource and Property Types Reference - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+    - AWS Template Reference. Very cool. 
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
