@@ -1,6 +1,4 @@
 # Monday Interview
-
-
 ### SQL
 - __Inner Join:__ Returns records from two or more tables with commonalities. `SELECT * FROM APPLE A INNER JOIN BANANA B ON A.ID = B.ID` Would return records that match those records in A and B.
 - __Outer Join:__ Returns records from two or more tables with commonalities and records which don't match. 
