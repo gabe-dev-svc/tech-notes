@@ -1,0 +1,98 @@
+createdAt: "2019-08-07T12:30:07.785Z"
+updatedAt: "2019-08-07T13:47:45.637Z"
+type: "MARKDOWN_NOTE"
+folder: "481e1531acabf01ae5de"
+title: "Serverless Computing"
+tags: []
+content: '''
+  # Serverless Computing 
+  
+  _The point of these notes is to server as a reference for a Lunch-n-Learn over serverless computing, answering some of the questions people may have._
+  
+  Scope is really limited to a "Serverless 101". Going to be a definition of serverless and possible applications thereof, then a demo of an application hosted all serverless. 
+  
+  __Goal date for lunch-n-learn: 9/4/2019__
+  
+  #### Outline
+  - What is serverless computing?
+    - Definition
+    - History(?)
+    - What are some of the advantages serverless computing has?
+    - Caveats that serverless computing has
+    - Major cloud providers offering serverless computing
+  - Overview of AWS Serverless services
+    - Amazon S3
+    - Amazon DynamoDB/Amazon Aurora Serverless
+    - AWS Lambda
+    - Amazon Kinesis 
+    - Amazon SNS
+    - Amazon SQS
+  - Serverless application use cases
+    - Data processing
+    - Entire web application
+  - Demo 
+  - Pricing
+  - Questions
+  
+  ## Questions that I have and want to get answered about serverless
+  
+  - What is serverless?
+  _Serverless allows technologists to run their  computing services* on a cloud-provider's architecture (in our examples, AWS) without having to worry abaout a majority off the adminstrative tasks that come with using their own servers or even managing their own virtual servers._
+  > Serverless applications don’t require provisioning, maintaining, and administering servers for backend components such as compute, databases, storage, stream processing, message queueing, and more. 
+  
+  - Why use serverless?
+  Increased agility - With less operational tasks, you're able to allocate more of your resources (time, people, money) to development. The computing services needed for applications are already up and running, it's just a matter of writing the code and using them.
+    - Typically cloud providers offer scaling based on metrics defined by you. Rather than scaling based on number of users, resources (compute, throughput, memory) can be monitored and increased at certain thresholds.
+    - With serverless, you pay for throughput/execution. 
+  
+  - What are some of the caveats to  using serverless?
+  
+  - What is AWS Lambda?
+  [Here](#AWS-Lambda)
+  - What are some of the databases available via serverless?
+  - What about other applications other than web applications?
+  - How do you handle security?
+  - How would you build a serverless REST endpoint?
+  
+  ## Hosting a Serverless Web Application
+  Use:
+  - [AWS Lambda](#AWS-Lambda)
+  - [Amazon API Gateway](#Amazon-API-Gateway)
+  - Amazon S3
+  - Amazon DynamoDB
+  
+  ## AWS Lambda
+  Compute services allowing users to run code without provisioning or managing servers. Code is executed only when needed and scales automatically. 
+  
+  __Benefits__
+  - Pay only for the compute time consumed. 
+  - Languages Supported: 
+    - Node.js (JavaScript)
+    - Python (3.6, 3.7, 2.7)
+    - Ruby
+    - Java 8
+    - Go
+    - .NET Core (2.1 [C#, PowerShell Core 6.0], 1.0 [C#])
+    - Other langauges can be used if implementing a custom runtime, out of scope tho.
+  - Lambda is usually ran in response to events (e.g. changes to data in Amazon S3 or DynamoDB, run code in response to HTTP requests, invoke code using API calls made using AWS SDKs)
+  
+  ### Lambda Security
+  - IAM (Identity and Access Management) is used to manage access to Lambda API and resources like functions and layers. 
+  - Permissions policy is created granting access to certain groups, users, and services that give them access to that Lambda function.
+  - Manage permissions in a permission policy for users and services to use Lambda. 
+  - Lambda functions also have policies (execution roles) which grant it permission to access AWS resources and services. 
+  
+  
+  ## Amazon API Gateway
+  AWS Services creating, publishing, maintaining, monitoring, and  securing REST and WebSocke APIs at any scale. 
+  - APIs are HTTP-based, meaning they support HTTP verbs (GET, POST, PUT, PATCH, and DELETE)
+  - A reverse proxy, of a sort, which routes requests to certain events, AWS services, or private applications. 
+  - > API Gateway acts as a "front door" for applications to access data, business logic, or functionality from your backend services, such as workloads running on Amazon Elastic Compute Cloud (Amazon EC2), code running on AWS Lambda, any web application, or real-time communication application
+  - Powerful, flexible authentication mechanisms, such as  AWS IAM policies, Lambda authorizer functions and Amazon Cognito user pools. 
+  - 
+'''
+linesHighlighted: [
+  36
+]
+isStarred: false
+isTrashed: false
