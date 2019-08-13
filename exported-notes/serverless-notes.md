@@ -52,7 +52,7 @@ Use:
 - [AWS Lambda](#AWS-Lambda)
 - [Amazon API Gateway](#Amazon-API-Gateway)
 - Amazon S3
-- Amazon DynamoDB
+- [Amazon DynamoDB](#Amazon-Dynamo-DB)
 
 ## AWS Lambda
 Compute services allowing users to run code without provisioning or managing servers. Code is executed only when needed and scales automatically. 
