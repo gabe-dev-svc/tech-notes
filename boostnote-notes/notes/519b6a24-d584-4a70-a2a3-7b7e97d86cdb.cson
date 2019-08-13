@@ -1,5 +1,5 @@
 createdAt: "2019-08-07T12:30:07.785Z"
-updatedAt: "2019-08-13T02:23:05.707Z"
+updatedAt: "2019-08-13T02:26:26.663Z"
 type: "MARKDOWN_NOTE"
 folder: "481e1531acabf01ae5de"
 title: "Serverless Computing"
@@ -59,7 +59,7 @@ content: '''
   - [AWS Lambda](#AWS-Lambda)
   - [Amazon API Gateway](#Amazon-API-Gateway)
   - Amazon S3
-  - Amazon DynamoDB
+  - [Amazon DynamoDB](#Amazon-Dynamo-DB)
   
   ## AWS Lambda
   Compute services allowing users to run code without provisioning or managing servers. Code is executed only when needed and scales automatically. 
