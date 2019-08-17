@@ -24,6 +24,11 @@
       "key": "fdfee90ea5e12c5b6d12",
       "color": "#B013A4",
       "name": "Architecture"
+    },
+    {
+      "key": "eaeb58bb16445477f510",
+      "color": "#B013A4",
+      "name": "[Notes] Desigining Data Intensive Applications"
     }
   ],
   "version": "1.0"
