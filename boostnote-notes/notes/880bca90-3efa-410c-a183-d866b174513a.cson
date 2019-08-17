@@ -1,10 +1,62 @@
 createdAt: "2019-08-17T20:39:09.435Z"
-updatedAt: "2019-08-17T20:39:24.078Z"
+updatedAt: "2019-08-17T21:59:22.341Z"
 type: "MARKDOWN_NOTE"
 folder: "eaeb58bb16445477f510"
 title: "[2] Data Models and Query Languages"
 tags: []
-content: "# [2] Data Models and Query Languages"
+content: '''
+  # [2] Data Models and Query Languages
+  
+  ## Relational Model vs Document Model
+  
+  ### Birth of NoSQL
+  Driving forces behind NoSQL:
+  - Need for greated scalablity than relational databases can easily achieve, including very large datasets or very high write throughput
+  - Preference for free and open source software over commercial database products.
+  - Specialized query operations not otherwise supported very well by relational models
+  - Frustration with restrictiveness of relational schemas and desire for a more dynamic and expressive data model.
+  _Polyglot persistence:_ Use of relational databases alongside broad variety of nonrelational datastores.
+  
+  ### Object-Relational Mismatch
+  - OO Programming leads to criticism of SQL data model due to the translation layer sometimes required.
+  - Normalization was very highly-adopted in traditional SQL models, however, now SQL standard added support for structured data types and XML data. JSON data types are supported by Postgres, DB2, and MySQL
+  - Resumes and objects with tree structures are explicitly shown in JSON representations. Document-oriented databases support JSON. 
+  - The idea behind normalization is to remove duplication in databases. Storing values as references instead of the actual text is a form of normalization often seen in databases. 
+  - Normalizing data requires many-to-one relationships--which don't play nice with the document model due to the often poorly supported ability to join. This is overcome by making multiple requests to the database but those joins are now application code instead of just database processing.
+  - Document models are usually pretty good for one-to-many relationships, but as previously stated, have shortcomings to many-to-many relationships 
+  
+  
+  ### Are Document Databases Repeating History?
+  - CODASYL was a network model which fizzled out
+  - Relational and document databases are not fundamentally different when dealing with many-to-one and one-to-many relationships. Relational databases use foreign keys while document databases use document references. 
+  
+  ### Relational vs Document Databases Today
+  Main arguments in document model:
+  - Schema flexbility
+  - Better performance due to locality
+  - Closer to the data structures used by the application.
+  Counter from relational model:
+  - Better support for joins and M:M M:1 relationships
+  
+  #### Which data model leads to simpler application code?
+  
+  > For highly interconnected data, the document model is awkward the relatnional model is acceptable, and graph models are the most natural.
+  
+  
+  If data has document-like structure (tree of one-to-many relationships where typically the entire tree is loaded at once) then it's probably a good idea to use a document mode. Splitting the document into multiple tables can lead to cumbersome schemas and unnecessarily complicated application code. 
+  
+  - If application does use M:M relationships, document model becomes less appealing. 
+  
+  #### Schema flexibility in the document model
+  - Document databases are sometimes called schemaless, but sometimes implicit schemas exist due to application model structures of things of the sort. More appropriate term is schema-on-read.
+  - Relational databases don't have the schema flexibilty and require migrations. 
+  - New columns can be populated come read-time. 
+  - Schemaless can prove useful when data needs to be flexible, be it because there are objects which don't have a set structure or the objects being recorded can change because they come from some external dependency.
+  - Schemas however can help support and enforce strucuture.
+  
+  #### Data locality for queries
+  
+'''
 linesHighlighted: []
 isStarred: false
 isTrashed: false
