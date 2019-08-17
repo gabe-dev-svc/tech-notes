@@ -1,13 +1,28 @@
 createdAt: "2019-08-17T13:56:20.857Z"
-updatedAt: "2019-08-17T20:34:23.114Z"
+updatedAt: "2019-08-17T20:39:54.084Z"
 type: "MARKDOWN_NOTE"
 folder: "eaeb58bb16445477f510"
-title: "Chapter 1"
+title: "[1] Reliable, Scalable, and Maintainable Applications"
 tags: []
 content: '''
-  # Chapter 1 
+  <!-- toc -->
   
-  ## Reliable, Scalable, and Maintainable Applications
+  - [[1] Reliable, Scalable, and Maintainable Applications](#1-Reliable-Scalable-and-Maintainable-Applications)
+      + [Reliability](#Reliability)
+        - [Hardware errors](#Hardware-errors)
+        - [Software Errors](#Software-Errors)
+        - [Human Errors](#Human-Errors)
+      + [Scalability](#Scalability)
+        - [Describing load](#Describing-load)
+        - [Describing performance](#Describing-performance)
+        - [Approaches for Coping with Load](#Approaches-for-Coping-with-Load)
+      + [Maintainability](#Maintainability)
+        - [Operability](#Operability)
+        - [Simplicity: Managing Complexity](#Simplicity-Managing-Complexity)
+        - [Evolvability: Making Change Easy](#Evolvability-Making-Change-Easy)
+  
+  <!-- tocstop -->
+  # [1] Reliable, Scalable, and Maintainable Applications
   - _Reliability:_ System should work correctly even in the face of adversity. 
   - _Scalability:_ As the system grows, there should be reasonable ways of dealing with that growth.
   - _Maintainability:_ Different people should be able to work on the system productively. 
@@ -85,8 +100,8 @@ content: '''
   
 '''
 linesHighlighted: [
-  7
-  77
+  75
+  5
 ]
 isStarred: false
 isTrashed: false
