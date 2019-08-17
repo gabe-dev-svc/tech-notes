@@ -1,5 +1,5 @@
 createdAt: "2019-04-06T22:34:11.725Z"
-updatedAt: "2019-06-02T16:26:01.624Z"
+updatedAt: "2019-06-02T20:45:12.168Z"
 type: "MARKDOWN_NOTE"
 folder: "4f53adeba5cb11a5e894"
 title: "Monday Interview"
@@ -92,6 +92,7 @@ content: '''
   - __Deadlock:__ Two or more threads are stuck waiting for eachother and thus stuck forever.
   - `Thread` uses `Runnable` objects to execute `run()`
   - __`Executor`s:__ Encapsulate `Runnable` and `Thread` objects. The `Executor` interface is implemented by classes such as `ThreadPoolExecutor` which executes the supplied threads.
+  - `synchronized` methods don't execute until the thread currently occupying it has released it. Same goes for synchronized code blocks.
 '''
 linesHighlighted: []
 isStarred: false
