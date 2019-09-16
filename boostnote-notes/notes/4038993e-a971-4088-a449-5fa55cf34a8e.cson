@@ -1,10 +1,68 @@
 createdAt: "2019-08-20T02:51:20.837Z"
-updatedAt: "2019-08-20T02:51:31.291Z"
+updatedAt: "2019-09-16T01:54:52.056Z"
 type: "MARKDOWN_NOTE"
 folder: "eaeb58bb16445477f510"
 title: "[3] Storage and Retrieval"
 tags: []
-content: "# [3] Storage and Retrieval"
+content: '''
+  # [3] Storage and Retrieval
+  
+  ## Data Structures That Power Your Database
+  
+  - Many databases internally use a log, or an append-only data file.
+  - _Index_: Additional structure derived from the primary data. 
+    - Slows down writes because indexes need to be updated.
+  
+  ### Hash Indexes
+  
+  - Hash indexes are similar to dictionaries. 
+  - _Compaction:_ Throwing away duplicate keys in the log and keeping only the most recent update for each key. 
+    - Compaction can occur in background thread, while that's going on read and writes can continue on the log. 
+  - Hash Table Index Limitation:
+    - Range queries are inefficient; you can't eaily scan over heads 0-1000.
+  
+  ### SSTables and LSM Trees
+  
+  - Key-value pairs of records are sorted and stored.
+  - Don't need an index of all the keys, only index of every few keys since the keys are sorted.
+  
+  #### Constructing and maintaining SSTables
+  
+  1. Add writes to an in-memory balanced tree data structure (such as a red-black tree) aka memtable.
+  2. Once the memtable gets bigger than a threshold, write the memtable to an SSTable file. 
+  3. Run merging and compaction process in the background to combine segment files and discard overwritten or deleted values.
+  
+  #### Making LSM-trees out of SSTables
+  
+  - LSM Trees are merged and compacted SSTables using the process detailed above.
+  
+  #### Performance Optimizations
+  
+  - _Bloom filters:_ Memory-efficient data structure for approximating the contents of a set. It ca tell you if a key does not appear in the database. 
+  - Size-tiered and leveled compaction:
+    - _Size-tiered_: newer/smaller SSTables are merged into older/larger SSTables. 
+    - _Leveled:_ Key range is split up into smaller SSTables and older data is moved into seperate levels, allowing compaction to proceed more incrementablly and use less disk space.
+  
+  ### B-Trees
+  
+  - Also keep key-value pairs sorted by key
+  - Break database down to fixed-sized blocks traditionally 4KB in size called pages, read/write on page at a time.
+  - Each page identified using an address/location, allows one page to refer to another
+  - These pointers can be used to create tree of pages. 
+  - Child pages responsible for continuous range of keys, keys between the references indicate where the boundaries between those ranges lie.
+  - Number of references to child pages in one page of the B-tree is called branching factor. 
+  - B-tree with `n` keys is always `O(log n)`
+  
+  #### Making B-trees reliable 
+   
+  - B-trees overwrite a page on disk 
+  - _Write-ahead log_: Append-only file to which every B-tree modification must be written before it can be applied to the pages of the tree itself. Makes the database resilient to crashes. 
+  
+  - _OLTP_: Online transaction processing. Database system optimized for transaction processing. 
+    - Typically user-facing, meaning they may see a huge number of requests. 
+    - DB engine uses index to find the data for the requested record's key. Disk seek time is usually the bottle neck.
+  - _OLAP_: Online analytics processing. Database system optimized for analytics. 
+'''
 linesHighlighted: []
 isStarred: false
 isTrashed: false
