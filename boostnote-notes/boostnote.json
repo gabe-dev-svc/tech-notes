@@ -29,6 +29,11 @@
       "key": "eaeb58bb16445477f510",
       "color": "#B013A4",
       "name": "[Notes] Desigining Data Intensive Applications"
+    },
+    {
+      "key": "8573e43a2d1f5cbc43d4",
+      "color": "#E10051",
+      "name": "Kafka Summit"
     }
   ],
   "version": "1.0"

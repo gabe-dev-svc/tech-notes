@@ -1,0 +1,84 @@
+createdAt: "2019-09-30T18:02:11.609Z"
+updatedAt: "2019-09-30T22:29:58.823Z"
+type: "MARKDOWN_NOTE"
+folder: "8573e43a2d1f5cbc43d4"
+title: "Tackling Kafka, with a Small Team"
+tags: []
+content: '''
+  # Tackling Kafka, with a Small Team
+  __
+  
+  - Engineer's Journey to keep Kafka stable.
+  - htttp://aphyr.com - Jepsen Analysis
+  
+  
+  ## Application Engineer's Perspective of Kafka in Robinhood
+  - Application engineers have an implicut trust on the system--it will always be working and everything will always be okay
+  - _Retry Logic_: Engineers went down the happy path so no "retry logic" was implemented or at least not tested.
+  - Library ownership: "You implemented Kafka, you __own__ Kafka"
+  
+  ## Infrastructure Engineer's Perspective
+  - Not enough visibilty to the system's health. 
+  - "Technical Whack-A-Mole"
+  
+  
+  ## What we got right
+  - Replacing unhealthy brokers, defined strategy for replacing those brokers. 
+  - Each broker has a broker ID. 
+    - Issue was when broker would go down, how would you get the next broker that spun up to replace it to adopt the recently failed's broker ID.
+  
+  ## Recently Got Right
+  - Tooling for rolling restarts - bult tooling (leveraging Prometheus and Fabric python libraries) that will run rolling restarts for unhealthy hosts
+  
+  ---
+  
+  # Using Kafka to Discover Events Hidden in your Database
+  - Event notification: Poewrful, easiest ways to bring event-ing
+  - Event-carried state transfer: throw event and include event information to change whatever needs to change
+  - Event Sourcing: 
+    - Fundamental Test: Do you have the abilty to blow away application state and then rebuild it from an event store?
+  
+  Primary Events:
+    - Application/service is responsible for notifying events
+    - Services are easy to deploy
+    - One service per function
+    - Use when services are easy to make, easy to test, easy to push
+  Derivative Events: 
+    - Events based on observation -- something happened but you weren't notified
+    - Use when services are complicated to make, brutal to test, beaurocratic to push
+  
+  ## Going Eventing
+  - What events are important? 
+    - Meet and partner with business, one way to source events
+  - Know your systems (including and especially legacy systems)
+  - Capture broad categories of events - capture all orders of events
+  
+  ### Derivative Events:
+  Three pillars: Observe -> Transform -> Emit
+  - Observing: Find durable event source
+    - RDMBs are a persistent source of data, the logs are sources of events
+    - [Debezium](https://debezium.io/)
+    - _Change Data Capture:_ Produce messages to Kafka for inserts, updates, and deletes
+  - Profiling Define event profile:
+    - Trigger the event in the source system
+    - Review CDC messages generated during the event
+    - Find the event fingerprint that signifies completeness
+    - Profile events and identify when they're complete
+    - Sometimes events are as simple as a single-table insert. How do you wait for all items to arrive? "What is the minimum amount of information we need to profile an event."
+  - Transforming: 
+    - What do I want to tell others and what information do I need?
+      - Time is very important in eventing
+        - Event production time 
+        - Database operation time
+      - Source System
+      - Event creation system
+      - Details
+  
+  
+  ---
+  
+  # Solutions for Bi-Directional 
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
