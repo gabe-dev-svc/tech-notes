@@ -1,5 +1,5 @@
 createdAt: "2019-09-30T18:02:11.609Z"
-updatedAt: "2019-09-30T22:29:58.823Z"
+updatedAt: "2019-09-30T22:50:11.277Z"
 type: "MARKDOWN_NOTE"
 folder: "8573e43a2d1f5cbc43d4"
 title: "Tackling Kafka, with a Small Team"
@@ -77,7 +77,11 @@ content: '''
   
   ---
   
-  # Solutions for Bi-Directional 
+  # Solutions for Bi-Directional Integration Between Oracle RDBMS and Apache Kafka
+  
+  - Smart endpoints, dumb pipes. Kafka is dumb, endpoints are smart. 
+  - CDC on Oracle is called Oracle GoldenGate
+  - Why Bi-Directional: 
 '''
 linesHighlighted: []
 isStarred: false
