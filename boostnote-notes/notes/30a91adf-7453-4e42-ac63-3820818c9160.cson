@@ -1,5 +1,5 @@
 createdAt: "2019-08-06T19:24:48.113Z"
-updatedAt: "2019-10-28T20:29:56.986Z"
+updatedAt: "2019-10-28T20:39:10.422Z"
 type: "MARKDOWN_NOTE"
 folder: "a0297bfc77f01ccc53a6"
 title: "AWS Certified Solutions Architect"
@@ -170,7 +170,22 @@ content: '''
   
   ### EBS 101
   
+  - Elastic Block Store: Virtual hard disk in cloud. 
+    - Each volume automatically replication within its AZ
+    
+    #### EBS volume types
+    1. General Purpose SSD: Balances price and performance, max IOPS/volume: 16,000 
+      - Balances price and performance
+    2. Provisioned IOPS (SSD): Max IOPS/Volume: 64,000
+      - Most performant
+    3. Throuhgput Optimized HDD: IOPS/volume: 500
+      - Low Cost HDD
+    4. Cold Hard Disk Drive: Max IOPS/Volume: 250
+      - Lowest cost
+    5. Magnetic
+      - Legacy HDD
   
+    - Volumes can be modified, you can change the volume type and size.
 '''
 linesHighlighted: []
 isStarred: false
