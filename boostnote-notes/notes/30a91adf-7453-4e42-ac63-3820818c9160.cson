@@ -1,5 +1,5 @@
 createdAt: "2019-08-06T19:24:48.113Z"
-updatedAt: "2019-08-06T19:24:49.995Z"
+updatedAt: "2019-10-28T20:29:56.986Z"
 type: "MARKDOWN_NOTE"
 folder: "a0297bfc77f01ccc53a6"
 title: "AWS Certified Solutions Architect"
@@ -135,6 +135,41 @@ content: '''
   ### S3 Lifecycle Management
   - Lifecycle rules can be created for current versions are previous versions.
   - After `x` amount of days, the current or previous (or both) versions can move to the tier specified in the rule.
+  
+  
+  ---
+  
+  ## EC2 101
+  
+  - _On Demand_ - Pay a fixed rate by the hour
+    - Low cost and flexible
+    - Short term, spiky, unpredictable workloads
+  - _Reserved_ - Capacity reservation at a significant discount
+    - Stead state or predictable usage
+    - Standard Reserved: Can't change instance type
+    - Convertible Reserved: Can change instance type
+    - Scheduled Reserved Instances: 
+  - _Spot_ - Bid for the price you want for instance capacity
+    - Flexible start/end times
+    - If you terminate the instance yourself, AWS will still charge you for the hour the instance ran.
+  - _Dedicated Instances_: Pretty much Amazon metal assigned to you
+  - CloudWatch detailed monitoring monitors the instance more frequently than once every 5 minutes (every minute)
+  - Termination protection is turned off by default
+  - Default action is for root EBS volume to be deleted when instance is terminated. Can be changed to keep virtual HDD
+  - EBS Root Volumes of default AMIs cannot be encrypted. 
+    - Additional volumes can be encrypted
+  
+  ### Security Groups
+  - Can't block IP addresses or ports using Security Groups
+  - Everything is blocked by default with security groups
+  - An EC2 instance can have more than on security group
+  - Default:
+    - All inbound traffic is blocked
+    - All outbound traffic is allowed
+  - Security Groups are stateful, meaning we don't have to change things for inbound and outbound ports. An inbound rule will allow traffic in and back out again.
+  
+  ### EBS 101
+  
   
 '''
 linesHighlighted: []
