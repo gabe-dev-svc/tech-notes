@@ -1,5 +1,5 @@
 createdAt: "2019-08-06T19:24:48.113Z"
-updatedAt: "2019-10-28T20:39:10.422Z"
+updatedAt: "2019-10-28T23:02:52.773Z"
 type: "MARKDOWN_NOTE"
 folder: "a0297bfc77f01ccc53a6"
 title: "AWS Certified Solutions Architect"
@@ -186,6 +186,34 @@ content: '''
       - Legacy HDD
   
     - Volumes can be modified, you can change the volume type and size.
+    - Volumes can be moved to another AZ by creating a snapshot and creating a new image. The snapshot lives in S3.
+    - Hardware Assited Virtualization allows you to create different types of EC2 instances
+    - AMIs can also be copied across regions by copying the AMI from one region to another, then launching that AMI in the new region
+    - Root volume for an EC2 instance is deleted when the EC2 instance is terminated, added volumes are persisted
+    - AMIs can be created from both volumes and snapshots
+    - Volumes will always be in the same AZ as the EC2 instance
+  
+  ### EBS vs Instance Store
+  
+  - All AMIs backed by instance store or EBS
+  - The root volume is either an instance store or EBS
+    - Instance store volumes can't be stopped--only rebooted or terminated. If the hypervisor fails, you will lose all data in an instance store since it is ephemeral
+  
+  ### Encrypted Root Volumes
+  
+  - Root volumes are now able to be encrypted for EBS. 
+  - Unencrypted volumes can be encrypted, but they take on another process:
+    - Create volume snapshot
+    - Copy snapshot
+    - Encrypt snapshot
+    - Create image
+    - Instance created from image (AMI) will need to be encrypted 
+  - Snapshots of encrypted volumes are encrypted automatically
+  
+  ### CloudWatch 101
+  
+  - Cloudwatch monitors resource and compute performance 
+  - Cloudtrail is like CCTV--it record user actions
 '''
 linesHighlighted: []
 isStarred: false
