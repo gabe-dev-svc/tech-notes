@@ -1,0 +1,76 @@
+createdAt: "2019-11-04T17:19:50.592Z"
+updatedAt: "2019-11-04T18:09:08.662Z"
+type: "MARKDOWN_NOTE"
+folder: "a0297bfc77f01ccc53a6"
+title: "CSA Exam - Databases on AWS"
+tags: []
+content: '''
+  # CSA Exam - Databases on AWS
+  
+  - RDS
+  - DynamoDB
+  - Elasticache
+  - Redshift 
+  
+  RDS Two Key Features:
+    - Multi-AZ for disaster recovery
+      - Connection string points to primary database, if fails, Amazon updates DNS address with new IP address. Implemented failover.
+    - Read replicas for performance
+      - Every write is written to a (read) replica. If something fails, there's no automatic failover. 
+      - There can be 5 copies of read replicas
+  
+  Non Relational Databases
+  - Does not require consitencies across records
+  
+  Data Warehousing
+    - Used for business intelligence 
+    - Used to pull in very large and coplex data sets
+    - OLTP vs OLAP
+    - Amazon Redshift: Amazon's Datawarehousing solution
+  
+  ElastiCache - In-memory cache service 
+    - Memcached
+    - Redis
+  
+  Backups
+    - Automated Backups allow recovery of database to any point in time within a retention period
+      - Point in time recovery 
+      - Enabled by default
+      - Backups taken within a defined window
+      - Not stored after deleting RDS instance
+    - Snapshots are taken manually/user-initiated. Stored even after deleting RDS instance
+    - Restores are restored to brand new RDS instances
+  
+  Encryption
+  - Done using AWS KMS service
+    - Replicas and snapshots are also encrypted of encryption is enabled 
+  
+  What is Multi AZ?
+  - Exact copy of production database available in another AZ
+  - Amazon RDS automatically fails over 
+  - Available for 
+    - SQL Server
+    - Oracle
+    - MySQL
+    - PostgreSQL
+    - MaraiDB
+  
+  What is a read replica?
+    - Production database asynchronously replicates to read replicas
+    - Can be architected to have reads be read from read replicas and writes to a single replica that then cascades
+    - Allows to have reas-only copy of production database. 
+    - Use read replicas primarily for very read-heavy database workloads. 
+    - Available for 
+      - SQL Server
+      - Oracle
+      - MySQL
+      - PostgreSQL
+      - MaraiDB
+    - Automatic backups must be turned on in order to deploy a read replica. 
+    - Each read recplica will have its own DNS endpoint
+    - Read repicas can be multi AZ
+    - You can have a read replica in a second region 
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
