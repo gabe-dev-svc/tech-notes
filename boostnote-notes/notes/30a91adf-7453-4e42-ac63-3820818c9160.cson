@@ -1,5 +1,5 @@
 createdAt: "2019-08-06T19:24:48.113Z"
-updatedAt: "2019-10-28T23:02:52.773Z"
+updatedAt: "2019-11-02T10:55:05.153Z"
 type: "MARKDOWN_NOTE"
 folder: "a0297bfc77f01ccc53a6"
 title: "AWS Certified Solutions Architect"
@@ -141,6 +141,22 @@ content: '''
   
   ## EC2 101
   
+  ### Summary
+  - Underlying hypervisors for EC2: Nitro and Xen
+  - 4 Pricing Models:
+    - On Demand: Fixed rate by the hour, no commitment
+    - Reserved: Capacity reservation
+    - Spot: Bid for the price
+    - Dedicated Hosts: Dedicated hosts for your EC2 instances
+  - EBS: Virtual Hard Disk Drive in cloud
+    - Termination Protection is turned off by default, EC2 instance gets deleted then EBS volume gets deleted
+  - EBS Root Volumes of DEFAULT AMIs cannot be encrypted
+  - Additional volumes can be encrypted
+  - Security group, all inbound traffic is blocked, all outbound is allowed. Security groups are STATEFUL, meaning inbound and outbound traffic are blocked
+  - Cold HDD is cheapest option. 
+  - EBS Snapshots are point in time copies, are incremental
+  - Volumes will always be in same AZ as an EC2 instance
+  
   - _On Demand_ - Pay a fixed rate by the hour
     - Low cost and flexible
     - Short term, spiky, unpredictable workloads
@@ -156,8 +172,10 @@ content: '''
   - CloudWatch detailed monitoring monitors the instance more frequently than once every 5 minutes (every minute)
   - Termination protection is turned off by default
   - Default action is for root EBS volume to be deleted when instance is terminated. Can be changed to keep virtual HDD
-  - EBS Root Volumes of default AMIs cannot be encrypted. 
+  - EBS Root Volumes can be encrypted, you just have to create a snapshot of a root volume, create an encrypted copy of the snapshot, and the create an image with the encrypted root volume
     - Additional volumes can be encrypted
+  - Roles are universal, you can use the role from any region.
+  - Get instance metadata at http://169.254.169.254/latest/meta-data/
   
   ### Security Groups
   - Can't block IP addresses or ports using Security Groups
@@ -214,6 +232,32 @@ content: '''
   
   - Cloudwatch monitors resource and compute performance 
   - Cloudtrail is like CCTV--it record user actions
+  
+  ### EFS
+  
+  - Supports NFSv4
+  - Only pay for the storage you use
+  - Elastic File Storage
+  - One file storage can be attached/mounted on to more than one EC2 instance
+  - Read after write consistency
+  
+  ### EC2 Placement Groups
+  
+  - A way of placing EC2 instances
+    - Clustered Placement Group
+      - Grouping of instances within single AZ
+      - Put instances very very close to eachother
+      - Low network latency, high network throughput 
+    - Spread Placement Group
+      - Group of instances placed on distinct racks/underlying racks
+      - Can exist within different AZs within a region
+      - Better for individual instances, designed to protect EC2 instances from hardware failure
+    - Partitioned
+      - Multiple instances can be in a partition group, partitions are in different racks. Partition 1 has instances A and B, but sits in a different rack than Partition 2.
+      - Can exist in different AZs within a region
+      - Multiple EC2 instances 
+  - Placement group names must be unique
+  - Existing instance can't be moved into a placement group, but you can relaunch an AMI and then launch a new instance from the AMI into the placement group.
 '''
 linesHighlighted: []
 isStarred: false
