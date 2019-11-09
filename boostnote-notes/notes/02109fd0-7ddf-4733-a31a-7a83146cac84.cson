@@ -1,0 +1,79 @@
+createdAt: "2019-11-08T13:48:57.582Z"
+updatedAt: "2019-11-09T21:35:53.846Z"
+type: "MARKDOWN_NOTE"
+folder: "a0297bfc77f01ccc53a6"
+title: "CSA Exam - VPCs"
+tags: []
+content: '''
+  CSA Exam - VPCs
+  
+  - Subnets cannot stretch across multiple availability zones. One subnet = one availability zone
+  - Subnet maximum size: `/16`, smallest `/28`
+    - Amazon reserves 5 IP addresses 
+  - Default VPC: 
+    - User friendly
+    - All subnets have route to internet
+    - Each EC2 instance has both public and private IP Addresses
+  - VPC Peering:
+    - You can peer VPCs with other AWS accounts as well as with other VPCs in the same account
+    - Peering peers in a star architecture; no transitive peering
+  - VPCs can be default (shared) or dedicated, but dedicated is super expensive
+  - Resources created by default by VPC:
+    - Route table
+    - Network ACL (Stateless)
+    - Security group (Stateful)
+  - Resources not created by default by VPC:
+    - Internet Gateway
+    - Subnets
+  - Availablity Zones are randomized -- US-East-1A can be completely different from US-East-1A in another account.
+  - To make subnets internet accessibly, you can enable Auto-assign Public IP Addresses
+  - Internet gateways are attached to VPCs and allow ingress and egress to and from the VPC
+     - Only one internet gateway per VPC
+  - Always keep main route table as private, make a public route table and associate public subnets with that route table.
+     - Route to the internet: `0.0.0.0/0 -> IGW` | `::/0 -> IGW`
+  - Private instances can allow access from public instances through the use of security groups
+     - If your public subnet's CIDR block is 10.0.1.0/24
+     - Create a security group allowing traffic from 10.0.1.0/24
+  - NAT instances vs NAT gateways:
+    - Network Address Translation: NAT
+    - NAT instances act as gateways to internet gateway, in order to make it a gateway we have to disable source and destination checks
+      - Add route from private instance to NAT_Instance
+      - Place in public subnet 
+      - I/O limited by instance size
+      - High availablility through autoscaling groups, multiple subnets in different AZs, and a script to automate failover
+      - Associated with security groups
+    - NAT Gateways are more scalable and reliable than NAT Instances
+      - Again, add route table for private subnet for 0.0.0.0/0 to NAT Gateway
+      - Redundant inside the availability zone. 
+      - One NAT gateway per AZ
+      - Start with throughput of 5Gbps and scales to 45Gbps -- scales automatically
+      - No need to patch
+      - Not assoicated with security groups
+      - No need to disable source/destination checks
+      - Best practice is to have a NAT gateway per AZ
+  - Access Control Lists have inbound and outbound rules
+    - Ephemeral ports are used as por assignment on server end of communication , done to continue communications with a client that initially connected to one of the server's well-known listening ports.
+    - NAT gateway uses ports 1024-65535 as ephemeral ports by default
+    - Default ACLs deny everything
+    - Subnets are associated with ACLs
+    - Again, ACLs are stateless you have to define inbound and outbound rules
+    - Rules are evaluated in order, by rule #. E.g. Rule 100 trumps rule 400, but rule 99 trumps rule 100.
+    - Many subnets can be associated with Network ACLs, one subnet can only have one network ACL association
+    - Network ACLs act before security groups
+  - Elastic Load Balancers require at least two public subnet associations
+  - VPC Flow logs - Capture traffic to and from network interfaces in VPC 
+    - Can be created at VPC, Subnet, or Network Interface level
+    - Cannot enable flow logs for VPCs peered with your VPC unless peer VPC is in your account
+    - Cannot tag a flow log
+    - Cannot change its configuration
+    - Not all traffic is monitored: Amazon DNS server traffic is not logged, Windows license activation traffic is not logged
+    - Metadata traffic (169.254.169.254) is not logged
+    - Traffic to IP address for the default VPC router is not logged
+    - 
+'''
+linesHighlighted: [
+  32
+  34
+]
+isStarred: false
+isTrashed: false
