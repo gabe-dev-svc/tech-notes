@@ -1,11 +1,24 @@
 createdAt: "2019-11-08T13:48:57.582Z"
-updatedAt: "2019-11-09T21:35:53.846Z"
+updatedAt: "2019-11-09T22:41:27.822Z"
 type: "MARKDOWN_NOTE"
 folder: "a0297bfc77f01ccc53a6"
 title: "CSA Exam - VPCs"
 tags: []
 content: '''
-  CSA Exam - VPCs
+  # CSA Exam - VPCs
+  
+  ## Summary
+  - VPC: Logical data center in AWS
+  - One subnet always = one AZ
+  - Security groups are stateful, Network ACLs are stateless
+  - Cannot do transitive peering among VPCs
+  - Egress-only gateways are meant only for IPv6
+  - VPCs can connect across account
+  - Amazon reserves 5 IP addresses within subnet
+  - VPC can only have 1 internet gateway
+  - Maximum of 5 VPCs per region
+  - Route goes from instance to NAT gateway, then from NAT gateway to the internet
+  - By default 
   
   - Subnets cannot stretch across multiple availability zones. One subnet = one availability zone
   - Subnet maximum size: `/16`, smallest `/28`
@@ -69,11 +82,26 @@ content: '''
     - Not all traffic is monitored: Amazon DNS server traffic is not logged, Windows license activation traffic is not logged
     - Metadata traffic (169.254.169.254) is not logged
     - Traffic to IP address for the default VPC router is not logged
-    - 
+  - Bastion Hosts: Host specifically designed and configured to withstand attacks.
+    - Proxy server outside of the private subnet allowing access to private resources
+  - Direct connect: cloud service solution allowing dedicated network conection from your premises to AWS
+  - Can establish private connectivity between AWS and your datacenter.
+    - From customer network to the AWS infrastructure, never goes through the internet. 
+    - Connect directly to AWS
+    - Useful for high throughput workloads, also for stable and reliable, secure connection
+  - VPC Endpoints:
+    - Allow connection between VPC and supported AWS services without leaving the Amazon network. Never go over the internet. 
+    - Interface endpoint:
+      - ENI (elastic network interface) with private IP address that serves as an entry point for traffic destined to a supported service. ENI is attached to EC2
+    - Gateway endpoint:
+      - Supported for S3 and DynamoDB
+      - Services go through VPC gateway and straight to S3 or DynamoDB.
+    - Roles are required for services to access other AWS services
+    - Powered by PoweLink, horizontally scalable
 '''
 linesHighlighted: [
-  32
-  34
+  37
+  35
 ]
 isStarred: false
 isTrashed: false
