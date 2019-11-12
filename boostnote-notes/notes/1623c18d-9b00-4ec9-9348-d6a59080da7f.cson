@@ -1,0 +1,45 @@
+createdAt: "2019-11-11T13:41:18.106Z"
+updatedAt: "2019-11-11T14:37:34.681Z"
+type: "MARKDOWN_NOTE"
+folder: "a0297bfc77f01ccc53a6"
+title: "CSA Exam - Route 53"
+tags: []
+content: '''
+  #CSA Exam - Route 53
+  
+  
+  ## DNS 101
+  - Route 53: Amazon DNS service 
+  - ICANN enforces uniqueness of domain names across the Internet
+  - Amazon is now a domain name registrar
+  - DNS Records
+    - `A` stands for Address - What's the IP Address of this domain?
+    - `NS Records` - Name server, which DNS server is authoritative for that domain record?
+    - `SOA Records` - Start of Authority, stores information about the name of the server that supplied the data for the zone.
+      - Stores name of the server that supplied data for the zone, among other details
+    - `CName Records` - stands for canonical name
+      - Can be used to resolve one domain name to another
+      - Can't be used for naked domain names (missing `www`)
+    - `Alias Records` work like `CName` records
+  
+  ## Domain Name Registration
+  - You can buy domain names online via Route 53
+  - It can take up to 3 days to register depending on the circumstances
+  
+  ## Routing Policies Available on AWS
+  - Simple Routing
+    - You can only have one record with multiple IP addresses. 
+    - Route 53 picks an IP address randomly.
+  - Weighted Routing
+    - Allows you to weight traffic to different areas/regions
+    - Create multiple record sets, assign Set ID to each record with the weight.
+    - Route 53 allows health checks which in turn allows you to disassociate records if health checks fail
+  - Latency-based Routing
+  - Failover Rouing
+  - Geolocation Routing
+  - Geoproximity Routing
+  - Multivalue Answer Routing
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
