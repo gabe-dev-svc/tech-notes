@@ -1,0 +1,17 @@
+createdAt: "2019-11-12T15:35:01.832Z"
+updatedAt: "2019-11-12T15:43:05.337Z"
+type: "MARKDOWN_NOTE"
+folder: "a0297bfc77f01ccc53a6"
+title: "Hey y'all. I've noticed that there seems to be a bit of information that's lost in translation while we're working on UI components. I wanted to propose a more standard approach to making changes to components so that we are all on the same page."
+tags: []
+content: '''
+  Hey y'all. I've noticed that there seems to be a bit of information that's lost in translation while we're working on UI components. I wanted to propose a more standard approach to making changes to components so that we are all on the same page. 
+  
+  1. We don't make visual changes to components unless they're depicted in the Figma. If the business doesn't like something about the current design, then we rework it and implement their changes in a future sprint, but really I feel like we shouldn't be making changes to the design mid sprint. 
+  2. We communicate functional changes in the acceptance criteria. Previous applies--if the business wants to rework something, then those changes are made in a future sprint.
+  
+  Keeping track of changes is hard when they're made on the fly and I feel like we shouldn't be working on components until its visual and logical functionalities have been thought out at least at 85% completion. In the end I think it'll save us a lot of frustration and time.
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: true

@@ -1,5 +1,5 @@
 createdAt: "2019-11-12T11:20:52.900Z"
-updatedAt: "2019-11-12T15:10:07.708Z"
+updatedAt: "2019-11-12T16:32:04.847Z"
 type: "MARKDOWN_NOTE"
 folder: "a0297bfc77f01ccc53a6"
 title: "CSA Exam - Applications"
@@ -46,6 +46,56 @@ content: '''
   - Inexpensive 
   
   ## Elastic Transcoder
+  - Convert media files from original source format into different formats
+  - Provides transcoding presets for popular output formats
+  - Pay based on minutes you transcode and on the resolution
+  
+  ## API Gateway
+  - "Front door" for applications to access data, business logic, or functionality from your back-end services.
+  - Make call to API Gateway, API Gateway calls Lambda, DynamoDB, or EC2
+  - Expose HTTPS endpoints to define a RESTful API
+  - Scales effortlessly
+  - Run efficiently with low cost
+  - Send API endpoint to a different target
+  - Throttle requests to prevent attacks
+  - How to deploy
+  - Deploy API to a stage
+    - Uses API Gateway domain by default
+    - Can use custom domain
+    - Now supports AWS Certificate Manager: free SSL/TLS certs
+  - API Caching is available. Reduce # of calls made to endpoints. Responses are cached in API Gateway.  
+  - API Gateway has CORS -- enable CORS for the origins you wish you allow
+  
+  ## Kinesis 
+  - Kinesis: Platform on AWS to send streaming data to. Makes it easy to load and analyze data.
+    - Kinesis Streams:
+      - Place to store stream data. Retention period is 24 hours - 7 days. 
+      - Data contained in shards.
+        - 5 transactions per second for reads, up to maximum total data read rate of 2MB per second
+        - 1,000 records per second for writes, up to a maxmium total data write of 1MB per second 
+        - Data capacity of your stream is a function of the number of shards that you specify for the stream. Total capacity of the stream is the sum of the capacities of its shards.
+      - Consumers can go in and analyze data inside shards. 
+    - Kinesis Firehose:
+      - No persistent storage, data is analyzed as it's brought in usually in a Lambda. The result is stored to S3 or to Elasticsearch Cluster.
+    - Kinesis analytics:
+      - Works with both Firehose and Streams
+      - Analyzes data on the fly inside either service (in Kinesis), stores data in elasticsearch cluster, Redshift, of S3
+  - Streaming data: data generated coninuously by thousands of data sources, typically send data records simutaneously and in small sizes.
+  
+  
+  ## Web Identity Federation and Cognito
+  - Web Identity Federation: Users gain access to AWS resources after they have successfully authenticated with a web-based identity provider.
+  - Cognito provides Web Identity Federation
+    - Sign-up and sign-in to your apps
+    - Synchronize user data for multiple devices
+    - Acts as an identity broker between your application
+  - User pools: user directories used to manage sign-up and sign-in functionality for mobile and web applications. 
+    - All about usernames and password
+  - Users can sign in directly to the User Pool or using Facebook, Amazon, or Google. Cognito assigns JWT.
+    - All about authoriziation
+  - Identity pools provide temporary AWS credentials to access AWS services like S3 or Dynamo DB via IAM roles.
+  - Cognito synchronizes data using silent SNS push notifications
+  - User authenticates first with WebID provider and receives an authentication token, exchanged for temporary AWS credentials alllowing them to assume an IAM role.
 '''
 linesHighlighted: []
 isStarred: false
