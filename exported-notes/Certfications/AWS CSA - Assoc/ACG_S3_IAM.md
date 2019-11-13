@@ -1,5 +1,7 @@
 # CSA Exam - S3 and Identity Management
 
+# Summary
+
 - __IAM__: Identity Access Management
   - Centralized control of AWS
   - Shared access to your AWS account
@@ -96,3 +98,25 @@ _First byte latency is milliseconds for all tiers except Glacier_
 ### S3 Lifecycle Management
 - Lifecycle rules can be created for current versions are previous versions.
 - After `x` amount of days, the current or previous (or both) versions can move to the tier specified in the rule.
+
+### Cross-Region Replication
+- Cross-region replication has to be enabled
+- Bucket regions have to be unique. 
+- Cross-region replication requires versioning to be enabled
+- Items can be replicated based on prefixes/tags
+- Buckets can be replicated across accounts, too.
+- Ownership and storage class can also be changed
+- IAM Roles required--possible point of failure.
+- Cross region replication **does not automatically upload existing objects**. Only new objects are replicated.
+- Delete markers are not replicated. That is, deletes are not propogated.
+
+### Transfer Acceleration
+- You can transfer to an edge location to accelerate transfer, that edge location will then upload to S3
+
+### CloudFront
+- What is CloudFront? It's a CDN (Content Delivery Network). CloudFront uses Edge locations to cache the content. 
+- The Edge locations will pull a queried file and cache it for the TTL that's configured. 
+- CloudFront Distribution is the name given to the CDN consisting of a collection of Edge Locations
+  - RTMP is a form of distribution used to Media Streaming
+  - Web Distributions are used for typically used to distribute websites
+- CloudFront cached objects can be cleared, but there is an associated charge.

@@ -1,5 +1,5 @@
 createdAt: "2019-08-06T19:24:48.113Z"
-updatedAt: "2019-11-13T13:32:17.078Z"
+updatedAt: "2019-11-13T13:38:16.318Z"
 type: "MARKDOWN_NOTE"
 folder: "a0297bfc77f01ccc53a6"
 title: "CSA Exam - In My Own Words"
@@ -8,6 +8,17 @@ content: '''
   # CSA Exam - In My Own Words
   
   ## S3/IAM
+  
+  _What is IAM?_
+  - IAM is the authentication and authorization system/service used by AWS to control access for users and services.
+  
+  - Access Key IDs and Secret Access keys only authenticate against the AWS SKD/API
+  - New users will be given passwords so that they can access the AWS Management Console
+  - It is always best practice to set up MFA on the root account--but it is not mandatory.
+  
+  _What's the difference between CloudWatch/CloudTrail?_
+  - CloudWatch monitors your AWS Resources (think CPU/Memory usage, or even application logs)
+  - ClouTrail monitors activity within your account--yes, that includes API calls.
   
   
 '''
