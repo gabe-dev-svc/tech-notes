@@ -1,0 +1,93 @@
+# CSA Exam - VPCs
+
+## Summary
+- VPC: Logical data center in AWS
+- One subnet always = one AZ
+- Security groups are stateful, Network ACLs are stateless
+- Cannot do transitive peering among VPCs
+- Egress-only gateways are meant only for IPv6
+- VPCs can connect across account
+- Amazon reserves 5 IP addresses within subnet
+- VPC can only have 1 internet gateway
+- Maximum of 5 VPCs per region
+- Route goes from instance to NAT gateway, then from NAT gateway to the internet
+- By default 
+
+- Subnets cannot stretch across multiple availability zones. One subnet = one availability zone
+- Subnet maximum size: `/16`, smallest `/28`
+  - Amazon reserves 5 IP addresses 
+- Default VPC: 
+  - User friendly
+  - All subnets have route to internet
+  - Each EC2 instance has both public and private IP Addresses
+- VPC Peering:
+  - You can peer VPCs with other AWS accounts as well as with other VPCs in the same account
+  - Peering peers in a star architecture; no transitive peering
+- VPCs can be default (shared) or dedicated, but dedicated is super expensive
+- Resources created by default by VPC:
+  - Route table
+  - Network ACL (Stateless)
+  - Security group (Stateful)
+- Resources not created by default by VPC:
+  - Internet Gateway
+  - Subnets
+- Availablity Zones are randomized -- US-East-1A can be completely different from US-East-1A in another account.
+- To make subnets internet accessibly, you can enable Auto-assign Public IP Addresses
+- Internet gateways are attached to VPCs and allow ingress and egress to and from the VPC
+   - Only one internet gateway per VPC
+- Always keep main route table as private, make a public route table and associate public subnets with that route table.
+   - Route to the internet: `0.0.0.0/0 -> IGW` | `::/0 -> IGW`
+- Private instances can allow access from public instances through the use of security groups
+   - If your public subnet's CIDR block is 10.0.1.0/24
+   - Create a security group allowing traffic from 10.0.1.0/24
+- NAT instances vs NAT gateways:
+  - Network Address Translation: NAT
+  - NAT instances act as gateways to internet gateway, in order to make it a gateway we have to disable source and destination checks
+    - Add route from private instance to NAT_Instance
+    - Place in public subnet 
+    - I/O limited by instance size
+    - High availablility through autoscaling groups, multiple subnets in different AZs, and a script to automate failover
+    - Associated with security groups
+  - NAT Gateways are more scalable and reliable than NAT Instances
+    - Again, add route table for private subnet for 0.0.0.0/0 to NAT Gateway
+    - Redundant inside the availability zone. 
+    - One NAT gateway per AZ
+    - Start with throughput of 5Gbps and scales to 45Gbps -- scales automatically
+    - No need to patch
+    - Not assoicated with security groups
+    - No need to disable source/destination checks
+    - Best practice is to have a NAT gateway per AZ
+- Access Control Lists have inbound and outbound rules
+  - Ephemeral ports are used as por assignment on server end of communication , done to continue communications with a client that initially connected to one of the server's well-known listening ports.
+  - NAT gateway uses ports 1024-65535 as ephemeral ports by default
+  - Default ACLs deny everything
+  - Subnets are associated with ACLs
+  - Again, ACLs are stateless you have to define inbound and outbound rules
+  - Rules are evaluated in order, by rule #. E.g. Rule 100 trumps rule 400, but rule 99 trumps rule 100.
+  - Many subnets can be associated with Network ACLs, one subnet can only have one network ACL association
+  - Network ACLs act before security groups
+- Elastic Load Balancers require at least two public subnet associations
+- VPC Flow logs - Capture traffic to and from network interfaces in VPC 
+  - Can be created at VPC, Subnet, or Network Interface level
+  - Cannot enable flow logs for VPCs peered with your VPC unless peer VPC is in your account
+  - Cannot tag a flow log
+  - Cannot change its configuration
+  - Not all traffic is monitored: Amazon DNS server traffic is not logged, Windows license activation traffic is not logged
+  - Metadata traffic (169.254.169.254) is not logged
+  - Traffic to IP address for the default VPC router is not logged
+- Bastion Hosts: Host specifically designed and configured to withstand attacks.
+  - Proxy server outside of the private subnet allowing access to private resources
+- Direct connect: cloud service solution allowing dedicated network conection from your premises to AWS
+- Can establish private connectivity between AWS and your datacenter.
+  - From customer network to the AWS infrastructure, never goes through the internet. 
+  - Connect directly to AWS
+  - Useful for high throughput workloads, also for stable and reliable, secure connection
+- VPC Endpoints:
+  - Allow connection between VPC and supported AWS services without leaving the Amazon network. Never go over the internet. 
+  - Interface endpoint:
+    - ENI (elastic network interface) with private IP address that serves as an entry point for traffic destined to a supported service. ENI is attached to EC2
+  - Gateway endpoint:
+    - Supported for S3 and DynamoDB
+    - Services go through VPC gateway and straight to S3 or DynamoDB.
+  - Roles are required for services to access other AWS services
+  - Powered by PoweLink, horizontally scalable
