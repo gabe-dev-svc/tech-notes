@@ -1,0 +1,21 @@
+createdAt: "2019-11-15T19:53:29.143Z"
+updatedAt: "2019-11-15T20:06:12.780Z"
+type: "MARKDOWN_NOTE"
+folder: "481e1531acabf01ae5de"
+title: "Apache Kafka"
+tags: []
+content: '''
+  # Apache Kafka
+  
+  - Runs on a cluster, one or more servers, can span multiple datacenters. 
+  - _Topics_: Streams of record categories
+    - Records consist of key, value, and timestamp. 
+  - Producer API: Publish stream of records to one or more kafka topics
+  - Consumer API: Application subscribe to one or more topics and process the stream of precords produced to them
+  - Streams API: Consume input streams for one or more topics, produce output stream to one or more output topics. Transform input streams to output streams.
+  - Connector API: Connect to a database and process DB events as events
+  - Client communication is made using a TCP Protocol
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
