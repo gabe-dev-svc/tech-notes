@@ -1,5 +1,5 @@
 createdAt: "2019-11-15T19:53:29.143Z"
-updatedAt: "2019-11-15T20:06:12.780Z"
+updatedAt: "2019-11-19T15:10:26.809Z"
 type: "MARKDOWN_NOTE"
 folder: "481e1531acabf01ae5de"
 title: "Apache Kafka"
@@ -10,11 +10,54 @@ content: '''
   - Runs on a cluster, one or more servers, can span multiple datacenters. 
   - _Topics_: Streams of record categories
     - Records consist of key, value, and timestamp. 
-  - Producer API: Publish stream of records to one or more kafka topics
-  - Consumer API: Application subscribe to one or more topics and process the stream of precords produced to them
-  - Streams API: Consume input streams for one or more topics, produce output stream to one or more output topics. Transform input streams to output streams.
-  - Connector API: Connect to a database and process DB events as events
   - Client communication is made using a TCP Protocol
+  
+  ## APIs
+  - Producer API: Allows application to publish stream of records to Kafka topics.
+  - Consumer API: Allows application to subscribe to topics and process the stream of records.
+  - Streams API: Allows an applicatoin to act as a stream processor, consuming input stream from topics and producing output streams to output topics. 
+  - Connector API: Allows building/running reusable producers/consumers that connect to kafka topics to existing applications/data systems. 
+  
+  ## Topics
+  - Kafka clusters have paritioned, structured commit logs. Records in each partition are assigned sequential ID numbers called offsets which uniquely identify the reacord within the partition.
+  - Messages are kept even once consumed for a configured retention period. 
+  - only metadata retained on a per-consumer basis is the offset of the consumer in the log (what record have I read?)
+  - Log partitions are distributed over cluster nodes, each server handles requests for a share of the partitions. Partitions are replicated across configurable number of servers for fault tolerance. 
+    - Log parititions have one server acting as the "leader" and other servers acting as "followers." Leaders handle all read/write requests fro the partition, followers replicate the leader. If one leader fails, one of the followers will automatically become the new leader. 
+    - Each server acts as a leader for some of its partitions and a follower for others, so load is well balanced within the cluster. 
+  - **MirrorMaker** provides geo-replication support. Messages replicated across multiple datacenters or cloud regions. 
+  
+  ## Producers
+  - Publish records to topics of their choice, responsible for choosing which record to assign to which partition within the topic. Message distribution can be round-robin or it can follow another specified convention. 
+  
+  ## Consumers
+  - Consumers are placed in consumer groups, each record published to a topic is delivered to one consumer instance within each consumer group. Consumer instances can be in separate processes or on separate machines. 
+    - If all consumer instances are in the same consumer group, then the records will be load balanced over the consumer instances.
+    - If all consumer instances have different consumer groups, then each record will be broadcasted to all the consumer processes. 
+  ---
+  
+  ## Running Kafka on AWS
+  
+  Deployment Patterns
+  - Single AWS Region, Three AZs, All Active
+  - ![ab778038.png](:storage/61401eb1-6c54-4a50-8f16-c7941462d553/ab778038.png)
+    - One Kafka cluster per AZ along w/ Apache ZooKeeper as well as Kafka producers/consumers
+    - ELB distributes data evenly across the three Kafka clusters
+    - Kafka consumers aggregate data from all three Kafka clusters
+    - Failover:
+      - Mark down all Kafka producers, stop consumers, debug/restack Kafka, restart consumers, restart producers
+    - High operational cost, rolling upgrades need to be done on each cluster, but can sustain the failure of two AZs
+  - Single region, Three AZs, Active-Standby
+  - ![59b2c296.png](:storage/61401eb1-6c54-4a50-8f16-c7941462d553/59b2c296.png)
+    - Single Kafka cluster, brokers, and ZooKeepers distributed across the three AZs.
+    - Similar Kafka cluster acts as standby, can use MirrorMaker to replicate messages between any two clusters.
+    - Kafka consumers and producers are deployed on all three AZs
+    - Only one Kafka cluster is deployed across all three AZs
+    - ZooKeeper instances are deployed on each AZ.
+    - Added latency due to cross-AZ data transfer, cluster can become unavailable in case of network glitch where ZooKeepr does not see Kafka brokers, possibility of in-transit message loss during failover. Less operatoin overhead, though. 
+  - r3.xlarge for brokers and r3.large for ZooKeeper is what Intuit used. 
+  - If cluster is expected to receive high read/write traffic, select instance type that offers 10 Gb/s performance.
+  - Keep interborker network traffic on the private subnet.
 '''
 linesHighlighted: []
 isStarred: false
