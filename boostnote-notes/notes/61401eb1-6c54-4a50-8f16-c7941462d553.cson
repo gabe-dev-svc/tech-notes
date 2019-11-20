@@ -1,5 +1,5 @@
 createdAt: "2019-11-15T19:53:29.143Z"
-updatedAt: "2019-11-19T15:10:26.809Z"
+updatedAt: "2019-11-19T21:50:41.853Z"
 type: "MARKDOWN_NOTE"
 folder: "481e1531acabf01ae5de"
 title: "Apache Kafka"
@@ -34,6 +34,9 @@ content: '''
   - Consumers are placed in consumer groups, each record published to a topic is delivered to one consumer instance within each consumer group. Consumer instances can be in separate processes or on separate machines. 
     - If all consumer instances are in the same consumer group, then the records will be load balanced over the consumer instances.
     - If all consumer instances have different consumer groups, then each record will be broadcasted to all the consumer processes. 
+  - Consumption is implemented in Kafka by dividing up the partitions in the log over the consumer isntances so that each instance is the exclusive consumer of a "fair share".
+    - New instances take over some partitions from other members of the group, dead instance partitions will be distributed among the remaining instances.
+  - Total order over records is only available within a topic partition. If total order over records is required then have a topic with only one partition--though that means that there will only be one consumer process per consumer group.
   ---
   
   ## Running Kafka on AWS
