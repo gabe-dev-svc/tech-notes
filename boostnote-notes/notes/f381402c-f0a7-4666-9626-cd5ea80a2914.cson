@@ -1,43 +1,17 @@
 createdAt: "2019-11-26T13:37:32.996Z"
-updatedAt: "2019-11-26T14:31:38.633Z"
+updatedAt: "2019-12-18T13:35:36.569Z"
 type: "MARKDOWN_NOTE"
 folder: "44ba65846ed8b969aec9"
-title: "GCP Structure and Design"
+title: "Chapter 3 - Data Flows"
 tags: []
 content: '''
-  # GCP Structure and Design
-  - GCP has Data Centers that are logically grouped together called _Zones_
-    - Made to be independent of eachtoher
-  - _Regions_ consist of grouped Zones
-  - _Multi-Region_ consist of Regions
-  - _Private Global Network_ All of the multi regions 
-  - Google's network allows for Global IP addressing
-  ## Pricing
-  - Provisioned: "Make sure you'r ready to handle X"
-  - Usage: "Handle whatever I use, and charge me for that"
-  - Network Traffic:
-    - Free on ingress
-    - Charged on egress, although egress to GCP services are free sometimes depending on destination and location of service.
+  # Chapter 3 - Data Flows
   
-  ## Security
-  - Everything is always encrypted at rest
-  - Strong key and identity management
-  - Network encryption, all control info encrypted 
-    - All WAN traffic to be encrypted automatically 
+  ## ACE Review
+  - Data Flows: Moving, Processing, Remembering 
+  - _Cloud Shell_: Shell hosted in a browser that allows you to manage GCP infrastructure and applications.
+  - 
   
-  ## Scale and Automation
-  - Scalability must be unbounded
-  - Automate everything
-  
-  ## Resource Quotas (Soft Limits)
-  - Some regional, some global
-  - Quotas can be changed by request or sometimes automatically
-  
-  ## Organization
-  - Projects are similar to AWS accounts
-  - Projects own resources
-  - Resources can be shared with other projects
-  - Projects can be grouped and controoled in a hierarchy.
 '''
 linesHighlighted: []
 isStarred: false

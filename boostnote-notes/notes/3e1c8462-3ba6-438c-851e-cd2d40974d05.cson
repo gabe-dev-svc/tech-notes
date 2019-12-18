@@ -1,0 +1,67 @@
+createdAt: "2019-12-18T13:41:43.834Z"
+updatedAt: "2019-12-18T14:48:53.137Z"
+type: "MARKDOWN_NOTE"
+folder: "44ba65846ed8b969aec9"
+title: "GCP for AWS Professionals"
+tags: []
+content: '''
+  # GCP for AWS Professionals
+  - GCP has functionality enabling regions to synchronize data across regions according to the needs of a given GCP service.
+  - GCP uses points of presence (POPs) to provide Google Cloud CDN and also to deliver built-in edge caching for services such as Google App Engine and Google Cloud Storage.
+  - Google Cloud groups service usage by project instead of by account. Multiple projects can be greated under the same account. Deleted projects will also delete associated services.
+  - Amazon CLI === Cloud SDK
+    - Cloud SDK can be used in web browser by using the Google Cloud Shell
+  - Google's Baseline Services:
+    - Compute: Google Compute Engine and Google App Engine
+    - Storage: Google Cloud Storage
+    - Networking: Google Virtual Private Cloud
+    - Databases: Google Cloud SQL, Google Cloud Firestore, and Google Cloud Bigtable
+  - Higher-level services are built on top of the baseline services 
+  
+  #### Service Translation
+  
+  | AWS               | GCP                      |
+  |-------------------|--------------------------|
+  | EC2               | Compute Engine           |
+  | Elastic Beanstalk | App Engine               |
+  | ECS               | Google Kubernetes Engine |
+  | AWS Fargate       | Cloud Run                |
+  | AWS Lambda        | Cloud Functions          |
+  | AWS VPC           | GCP VPC                  |
+  | ELB               | Cloud Load Balancing     |
+  | Direct Connect    | Cloud Interconnect       |
+  | Route 53          | Google Domains, Cloud DNS|
+  | CloudFront        | Cloud CDN                |
+  | S3                | Cloud Storage            |
+  | EBS               | Persistent Disk          |
+  | S3-IA             | Cloud Storage Nearline   |
+  | Glacier           | Cloud Storage Coldline   |
+  | EFS               | Filestore                |
+  | RDS               | Cloud SQL                |
+  | Aurora            | Cloud Spanner            |
+  | DynamoDB          | Firestore, Bigtable      |
+  | Kinesis           | Dataflow, Pub/Sub        |
+  | Redshift, Athena  | BigQuery                 |
+  | SNS/SQS           | Pub/Sub                  |
+  | CloudWatch        | Stackdriver Monitoring   |
+  | CW Logs           | Stackdriver Logging      |
+  
+  
+  ## Compute
+  - Compute Engine has the same concepts as AWS EC2.
+    - Machine images are just called images, while temporary VMs are called Preemptible VMs. Firewall rules are called Compute Engine firewall rules. Autoscaling is done via the Compute Engine autoscaler
+    - Create instances from stored disk images (remember, AMIs are called just images in GCP), launch/terminate instances On Demand, manage instances without restrictions, tag instances, and install a variety of operating systems on instance.
+  - Compute Engine allows you to create an SSH key when needed, even if instance is already running. Additionally, an instance can be accessed via the browser-based SSH terminal without needing to store keys locally.
+  - Compute engine has machine types, however, you can depart from the predefined configurations and define instance CPU/RAM
+  - Instance type categories range from shared core to dense storage. Shared core are machines taht run on a portion of a single physical CPU. Standard instance types provide a balance oc compute, network, and memory resources.
+    - `f1-micro` and `g1-small` instance type are shared core. `n1-standard-1` and `n1-standard-64` are standard instance types.
+    - Compute Engine does not currently offer large magentic storage.
+  - Preemptive VM Pricing model: 
+    - Fixed pricing. Depending on machine type, VMs can be discounted to nearly 80% of the on-demand rate.
+    - VMs run for a maximum of 24 hours (if not reclaimed by Compute Engine)
+    - Use of premium operating systems incur the associate dlicensing cost. 
+  - Images are stored within Compute Engine, but cannot be shared publicly. However, while AMIs are only available within a specific region, GCP CE images are globally available.
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
