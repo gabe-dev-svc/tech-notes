@@ -1,5 +1,5 @@
 createdAt: "2019-12-18T13:41:43.834Z"
-updatedAt: "2019-12-18T14:48:53.137Z"
+updatedAt: "2019-12-19T13:39:29.895Z"
 type: "MARKDOWN_NOTE"
 folder: "44ba65846ed8b969aec9"
 title: "GCP for AWS Professionals"
@@ -48,6 +48,8 @@ content: '''
   
   
   ## Compute
+  
+  ### Compute Engine
   - Compute Engine has the same concepts as AWS EC2.
     - Machine images are just called images, while temporary VMs are called Preemptible VMs. Firewall rules are called Compute Engine firewall rules. Autoscaling is done via the Compute Engine autoscaler
     - Create instances from stored disk images (remember, AMIs are called just images in GCP), launch/terminate instances On Demand, manage instances without restrictions, tag instances, and install a variety of operating systems on instance.
@@ -61,6 +63,13 @@ content: '''
     - VMs run for a maximum of 24 hours (if not reclaimed by Compute Engine)
     - Use of premium operating systems incur the associate dlicensing cost. 
   - Images are stored within Compute Engine, but cannot be shared publicly. However, while AMIs are only available within a specific region, GCP CE images are globally available.
+  - Compute Engine offers _sustained use_ discounts meaning the longer you use an instance the bigger the discount.
+  
+  ### Cloud Functions
+  - HTTP, Cloud Storage, Pub/Sub, Firebase, Stackdriver Logging are all possible Cloud Function function triggers
+  - Cloud Function duration cost scales with CPU _AND_ Memory usage
+  - Cloud Function functions terminate after 9 minutes
+  - In addition to ZIPs/JARs, and Cloud Storage deployment, Cloud Functions also supports deployment from GitHub or Cloud Source repositories
 '''
 linesHighlighted: []
 isStarred: false
