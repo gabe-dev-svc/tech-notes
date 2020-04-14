@@ -15,9 +15,7 @@
   - Data warehouse datamodels typically follow something called a _star schema_ or a _snowflake schema_ both of which are forms of _dimensional modeling_
 
 ### _What's Dimensional Modeling?_
-    - TODO
-    - An example of dimensional modeling would be the use of a `fact_sales` table holding all transactions that have taken place. From there, different dimensional tables would exist for customers, products, promotions, stores, etc. 
+  - An example of dimensional modeling would be the use of a `fact_sales` table holding all transactions that have taken place. From there, different dimensional tables would exist for customers, products, promotions, stores, etc. 
     - e.g.
 
-    ![Star Schema Example]
-    (../assets/star-schema.png)
+    ![Star Schema Example](assets/star-schema.png)
